@@ -12,7 +12,6 @@ import java.util.List;
 public class TestAll extends BaseSetUp {
     List<Product> ls1 = new ArrayList<>();
     List<Product> ls2 = new ArrayList<>();
-    List<Product> ls3 = new ArrayList<>();
     private String nameIphone = "apple iPhone 11";
     private String key = "iPhone 11";
     @Test(alwaysRun = true)

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Automation Test Web" thread-count="2">
+    <test name="Question2">
+        <parameter name="autoTestWeb" value="chrome"></parameter>
+        <classes>
+            <class name="TestCase.TestAll"></class>
+        </classes>
+    </test>
+</suite>

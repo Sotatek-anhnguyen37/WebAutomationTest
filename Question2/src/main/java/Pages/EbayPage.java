@@ -2,10 +2,7 @@ package Pages;
 
 import Base.BasePage;
 import Base.Product;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
@@ -28,9 +25,6 @@ public class EbayPage extends BasePage {
         SearchTextBox.click();
         SearchTextBox.sendKeys(key);
         SearchButton.click();
-    }
-    public void Scroll (){
-        allActions().keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
     }
     public List<Product> getProductEbay (String nameProduct){
         List<Product> ls = new ArrayList<>();

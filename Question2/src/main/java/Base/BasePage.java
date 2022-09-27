@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
@@ -18,14 +19,11 @@ public class BasePage {
         this.driver = driver;
         driver.manage().timeouts().implicitlyWait(TIME_OUT, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, TIME_OUT);
-        PageFactory.initElements(driver, this);   // khai bao cac element
+        PageFactory.initElements(driver, this);
          action = new Actions(driver);
     }
     public WebDriverWait getExplicitWait() {
         return wait;
-    }
-    public Actions allActions (){
-        return action;
     }
     public WebDriver getDriver() {
         return driver;

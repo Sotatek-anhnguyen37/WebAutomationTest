@@ -5,14 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 public class BaseSetUp {
-    private WebDriver driver;   // khoi tạo driver dung cho tat ca cac man
+    private WebDriver driver;
     public WebDriver getDriver(){
         return driver;
-    }   //tạo ham de cac man khac co the lay driver
+    }
     @BeforeClass
-    public void SetUp(){                // khoi tao driver cho chrome v
+    @Parameters({"autoTestWeb"})
+    public void SetUp(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();

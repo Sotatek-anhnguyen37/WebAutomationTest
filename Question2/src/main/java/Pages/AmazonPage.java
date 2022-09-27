@@ -4,7 +4,6 @@ import Base.BasePage;
 import Base.Product;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.Collections;
