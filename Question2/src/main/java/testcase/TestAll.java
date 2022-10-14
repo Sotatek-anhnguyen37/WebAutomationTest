@@ -15,7 +15,7 @@ import java.util.List;
 public class TestAll extends BaseSetUp {
     List<Product> listProduct1 = new ArrayList<>();
     List<Product> listProduct2 = new ArrayList<>();
-    private String nameIphone = "apple iPhone 11";
+    private String nameIphone = "apple iPhone 12";
 
     @Test(alwaysRun = true)
     public void searchProduct(){
