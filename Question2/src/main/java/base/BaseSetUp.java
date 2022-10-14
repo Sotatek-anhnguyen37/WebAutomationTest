@@ -1,4 +1,4 @@
-package Base;
+package base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -14,13 +14,13 @@ public class BaseSetUp {
     }
     @BeforeClass
     @Parameters({"autoTestWeb"})
-    public void SetUp(){
+    public void setUp(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
     @AfterClass
-    public void TearDown() throws InterruptedException {
+    public void tearDown() throws InterruptedException {
         Thread.sleep(3000);
         driver.quit();
     }

@@ -1,7 +1,7 @@
-package Pages;
+package pages;
 
-import Base.BasePage;
-import Base.Product;
+import base.BasePage;
+import base.Product;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
@@ -22,9 +22,13 @@ public class AmazonPage extends BasePage {
         super(driver);
         this.driver = driver;
     }
-    public void SearchProduct(String key){
+    public void clickSearchTextBox(){
         clickElement(SearchTextBox);
-        sendKeyElement(SearchTextBox, key);
+    }
+    public void sendKeySearchTextBox(String value){
+        sendKeyElement(SearchTextBox, value);
+    }
+    public void clickSearchButton(){
         clickElement(ButtonSearch);
     }
     public List<Product> getListProduct (String nameProduct){

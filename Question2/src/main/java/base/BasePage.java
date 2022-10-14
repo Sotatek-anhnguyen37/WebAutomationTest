@@ -1,4 +1,4 @@
-package Base;
+package base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,11 +7,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
-    private static final int TIME_OUT = 10;
+    private static final int TIME_OUT = 20;
     protected  WebDriver driver;
     private  WebDriverWait wait;
     private Actions action;
@@ -32,7 +31,7 @@ public class BasePage {
         getDriver().get(url);
     }
     public void clickElement(WebElement e){
-        getExplicitWait().until(ExpectedConditions.visibilityOfAllElements(e));
+        getExplicitWait().until(ExpectedConditions.elementToBeClickable(e));
         e.click();
     }
     public void sendKeyElement(WebElement e, String key){

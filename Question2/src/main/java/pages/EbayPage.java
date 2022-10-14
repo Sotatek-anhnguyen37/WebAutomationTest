@@ -1,7 +1,7 @@
-package Pages;
+package pages;
 
-import Base.BasePage;
-import Base.Product;
+import base.BasePage;
+import base.Product;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
@@ -21,10 +21,14 @@ public class EbayPage extends BasePage {
         super(driver);
         this.driver  = driver;
     }
-    public void SearchProduct (String key){
-        SearchTextBox.click();
-        SearchTextBox.sendKeys(key);
-        SearchButton.click();
+    public void clickSearchTextBox(){
+        clickElement(SearchTextBox);
+    }
+    public void sendKeySearchTextBox(String value){
+        sendKeyElement(SearchTextBox, value);
+    }
+    public void clickSearchButton(){
+        clickElement(SearchButton);
     }
     public List<Product> getProductEbay (String nameProduct){
         List<Product> ls = new ArrayList<>();

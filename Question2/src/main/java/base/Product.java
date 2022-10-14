@@ -1,4 +1,4 @@
-package Base;
+package base;
 
 public class Product {
     private String name;
@@ -43,7 +43,7 @@ public class Product {
         this.webSite = webSite;
     }
 
-    public void Show(){
+    public void show(){
         System.out.println("=========================");
         System.out.println("Name product: " + this.name);
         System.out.println("Price product: " + (double) Math.round(this.price * 100)/100);
