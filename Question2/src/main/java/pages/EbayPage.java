@@ -1,7 +1,7 @@
 package pages;
 
 import base.BasePage;
-import base.Product;
+import object.Product;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 

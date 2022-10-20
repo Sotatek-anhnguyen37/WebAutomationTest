@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
-    private static final int TIME_OUT = 20;
+    private static final int TIME_OUT = 10;
     protected  WebDriver driver;
     private  WebDriverWait wait;
     private Actions action;
