@@ -14,10 +14,12 @@ public class Test01 {
     @Test(priority = 1)
     public void readFileProperties() throws IOException {
         String value = propertiesFile.getValueFile("fullname");
-        System.out.println(value);
+        String diachi = propertiesFile.getValueFile("diachi");
+        System.out.println(value+ " : " + diachi);
     }
     @Test(priority = 0)
     public void writeFileProperties() throws IOException {
         propertiesFile.setValueFile("fullname", "nguyen duc anh");
+        propertiesFile.setValueFile("diachi", "trieuloc-hauloc-thanhhoa");
     }
 }

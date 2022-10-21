@@ -10,13 +10,10 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class ScreenShoot extends BasePage {
-    public ScreenShoot(WebDriver driver) {
-        super(driver);
-    }
-
+public class ScreenShoot {
+    WebDriver driver;
     public void takeScreenShoot(Method result) throws IOException {
-        TakesScreenshot ts = (TakesScreenshot) getDriver();
+        TakesScreenshot ts = (TakesScreenshot) driver;
         // Gọi hàm capture screenshot - getScreenshotAs
         File source = ts.getScreenshotAs(OutputType.FILE);
         //Kiểm tra folder tồn tại. Nêu không thì tạo mới folder

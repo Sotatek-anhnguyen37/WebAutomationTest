@@ -20,7 +20,7 @@ public class BaseSetUp {
         driver.manage().window().maximize();
     }
     @AfterClass
-    public void tearDown() throws InterruptedException {
+    public void tearDown() throws Exception {
         Thread.sleep(3000);
         driver.quit();
     }
