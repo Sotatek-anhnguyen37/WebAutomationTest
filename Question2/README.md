@@ -11,4 +11,4 @@
 2. You download the project to the device, extract it. Then open IntelIj , click File -> select Open -> select the project you extracted.
 3. In the left of the screen, click "autoTest.xml" -> Right click -> Run -> Check results.
 
-## This email is 01112000hda@gmail.com
+## This email is 01112000hda@gmail.com 
