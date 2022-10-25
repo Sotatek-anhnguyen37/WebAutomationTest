@@ -6,6 +6,10 @@ import org.testng.ITestResult;
 
 
 public class TestListioner implements ITestListener {
+    public void abc(){
+        System.out.println("alo ákdjfkasjldf");
+    }
+
     @Override
     public void onFinish(ITestContext arg0) {
         // TODO Auto-generated method stub
@@ -25,29 +29,30 @@ public class TestListioner implements ITestListener {
     }
 
     @Override
-    public void onTestFailure(ITestResult arg0) {
+    public void onTestFailure(ITestResult result) {
         // TODO Auto-generated method stub
-        System.out.println("testcase test failure");
+        System.out.println("Test FAILED: " + result.getName());
 
     }
 
     @Override
-    public void onTestSkipped(ITestResult arg0) {
+    public void onTestSkipped(ITestResult result) {
         // TODO Auto-generated method stub
-        System.out.println("testcase test skipped");
+        System.out.println("Test SKIPPER");
 
     }
 
     @Override
-    public void onTestStart(ITestResult arg0) {
+    public void onTestStart(ITestResult result) {
         // TODO Auto-generated method stub
-        System.out.println("testcase test start");
-
+        System.out.println("Test STARTED: " + result.getName());
+        System.out.println("Test class STARTED: "+ result.getTestClass().getName());
     }
 
     @Override
-    public void onTestSuccess(ITestResult arg0) {
-        System.out.println("testcase test success");
+    public void onTestSuccess(ITestResult result) {
+        System.out.println("Test stop with SUCCESS: " + result.getName());
     }
 }
+
 
