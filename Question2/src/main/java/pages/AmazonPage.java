@@ -15,8 +15,11 @@ public class AmazonPage extends BasePage {
     private WebElement SearchTextBox;
     @FindBy(xpath = "//input[@id='nav-search-submit-button']")
     private WebElement ButtonSearch;
-    @FindBy(xpath = "//div[@class=\"s-main-slot s-result-list s-search-results sg-row\"]//div[@class=\"s-card-container s-overflow-hidden aok-relative puis-include-content-margin s-latency-cf-section s-card-border\"]")
+    @FindBy(xpath = "(//div[@id='s-skipLinkTargetForMainSearchResults']/following-sibling::span[1]//div)[1]//div[@data-component-type='s-search-result']")
     private List<WebElement> listProduct;
+    private String namePro = ".//span[@class='a-size-medium a-color-base a-text-normal']";
+    private String priceProduct = ".//span[@class='a-price-whole']";
+    private String linkProduct = ".//div[@class='a-section']//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']";
     private  WebDriver driver;
     public AmazonPage(WebDriver driver) {
         super(driver);
@@ -35,17 +38,16 @@ public class AmazonPage extends BasePage {
         List<Product> ls = new ArrayList<>();
         String title = getDriver().getTitle();
         for (WebElement pro : listProduct) {
-            String name = pro.findElement(By.xpath(".//span[@class=\"a-size-medium a-color-base a-text-normal\"]")).getText();
+            String name = pro.findElement(By.xpath(namePro)).getText();
             if (name.toLowerCase().contains(nameProduct.toLowerCase())) {
                 Product product = new Product();
                 try {
-                    double price = Double.parseDouble(pro.findElement(By.xpath(".//span[@class=\"a-price-whole\"]")).getText().replace(",", ""));
-                    String link = pro.findElement(By.xpath(".//div[@class=\"a-section\"]//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']")).getAttribute("href");
+                    double price = Double.parseDouble(pro.findElement(By.xpath(priceProduct)).getText().replace(",", ""));
+                    String link = pro.findElement(By.xpath(linkProduct)).getAttribute("href");
                     product.setName(name);
                     product.setPrice(price);
                     product.setLink(link);
                     product.setWebSite(title);
-
                 } catch (NoSuchElementException e) {
                     continue;
                 }
@@ -54,7 +56,7 @@ public class AmazonPage extends BasePage {
         }
         return ls;
     }
-    public void SortProduct(List<Product> products){
+    public void sortProduct(List<Product> products){
         Collections.sort(products, new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {

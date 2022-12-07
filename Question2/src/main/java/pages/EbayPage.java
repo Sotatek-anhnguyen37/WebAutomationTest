@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EbayPage extends BasePage {
-    private WebDriver driver;
+    private String namePro = ".//span[@role='heading']";
+    private String priceProduct = ".//span[@class='s-item__price']";
+    private String linkProduct = ".//a[@class='s-item__link']";
     @FindBy(id = "gh-ac")
     private WebElement SearchTextBox;
     @FindBy(id = "gh-btn")
@@ -19,34 +21,37 @@ public class EbayPage extends BasePage {
 
     public EbayPage(WebDriver driver) {
         super(driver);
-        this.driver  = driver;
     }
-    public void clickSearchTextBox(){
+
+    public void clickSearchTextBox() {
         clickElement(SearchTextBox);
     }
-    public void sendKeySearchTextBox(String value){
+
+    public void sendKeySearchTextBox(String value) {
         sendKeyElement(SearchTextBox, value);
     }
-    public void clickSearchButton(){
+
+    public void clickSearchButton() {
         clickElement(SearchButton);
     }
-    public List<Product> getProductEbay (String nameProduct){
+
+    public List<Product> getProductEbay(String nameProduct) {
         List<Product> ls = new ArrayList<>();
         String title = getDriver().getTitle();
-        for(WebElement pro : listProduct1){
-            String name = pro.findElement(By.xpath(".//span[@role=\"heading\"]")).getText();
-            if(name.toUpperCase().contains(nameProduct.toUpperCase())  ){
-               Product product = new Product();
-               try {
-                  String link = pro.findElement(By.xpath(".//a[@class=\"s-item__link\"]")).getAttribute("href");
-                   double price = Double.parseDouble(pro.findElement(By.xpath(".//span[@class=\"s-item__price\"]")).getText().replace(",","").replace(" VND",""));
-                   product.setName(name);
-                   product.setLink(link);
-                   product.setPrice(price/23000);
-                   product.setWebSite(title);
-               } catch (Exception ex) {
-                   continue;
-               }
+        for (WebElement pro : listProduct1) {
+            String name = pro.findElement(By.xpath(namePro)).getText();
+            if (name.toUpperCase().contains(nameProduct.toUpperCase())) {
+                Product product = new Product();
+                try {
+                    String link = pro.findElement(By.xpath(linkProduct)).getAttribute("href");
+                    double price = Double.parseDouble(pro.findElement(By.xpath(priceProduct)).getText().replace(",", "").replace(" VND", ""));
+                    product.setName(name);
+                    product.setLink(link);
+                    product.setPrice(price / 23000);
+                    product.setWebSite(title);
+                } catch (Exception ex) {
+                    continue;
+                }
                 ls.add(product);
             }
         }
