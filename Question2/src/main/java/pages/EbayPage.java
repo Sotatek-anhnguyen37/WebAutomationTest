@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EbayPage extends BasePage {
-    private String namePro = ".//span[@role='heading']";
+    private String nameProduct = ".//span[@role='heading']";
     private String priceProduct = ".//span[@class='s-item__price']";
     private String linkProduct = ".//a[@class='s-item__link']";
     @FindBy(id = "gh-ac")
-    private WebElement SearchTextBox;
+    private WebElement searchTextBox;
     @FindBy(id = "gh-btn")
-    private WebElement SearchButton;
-    @FindBy(xpath = "//div[@class=\"srp-river-results clearfix\"]//div[@class=\"s-item__wrapper clearfix\"]")
+    private WebElement searchButton;
+    @FindBy(xpath = "//div[@class='srp-river-results clearfix']//div[@class='s-item__wrapper clearfix']")
     private List<WebElement> listProduct1;
 
     public EbayPage(WebDriver driver) {
@@ -24,23 +24,23 @@ public class EbayPage extends BasePage {
     }
 
     public void clickSearchTextBox() {
-        clickElement(SearchTextBox);
+        clickElement(searchTextBox);
     }
 
     public void sendKeySearchTextBox(String value) {
-        sendKeyElement(SearchTextBox, value);
+        sendKeyElement(searchTextBox, value);
     }
 
     public void clickSearchButton() {
-        clickElement(SearchButton);
+        clickElement(searchButton);
     }
 
-    public List<Product> getProductEbay(String nameProduct) {
+    public List<Product> getProductEbay(String namePro) {
         List<Product> ls = new ArrayList<>();
         String title = getDriver().getTitle();
         for (WebElement pro : listProduct1) {
-            String name = pro.findElement(By.xpath(namePro)).getText();
-            if (name.toUpperCase().contains(nameProduct.toUpperCase())) {
+            String name = pro.findElement(By.xpath(this.nameProduct)).getText();
+            if (name.toUpperCase().contains(namePro.toUpperCase())) {
                 Product product = new Product();
                 try {
                     String link = pro.findElement(By.xpath(linkProduct)).getAttribute("href");

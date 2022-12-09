@@ -11,28 +11,28 @@ import java.util.Comparator;
 import java.util.List;
 
 public class AmazonPage extends BasePage {
-    @FindBy(name = "field-keywords")
-    private WebElement SearchTextBox;
-    @FindBy(xpath = "//input[@id='nav-search-submit-button']")
-    private WebElement ButtonSearch;
-    @FindBy(xpath = "(//div[@id='s-skipLinkTargetForMainSearchResults']/following-sibling::span[1]//div)[1]//div[@data-component-type='s-search-result']")
-    private List<WebElement> listProduct;
     private String namePro = ".//span[@class='a-size-medium a-color-base a-text-normal']";
     private String priceProduct = ".//span[@class='a-price-whole']";
     private String linkProduct = ".//div[@class='a-section']//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']";
+    @FindBy(name = "field-keywords")
+    private WebElement searchTextBox;
+    @FindBy(xpath = "//input[@id='nav-search-submit-button']")
+    private WebElement buttonSearch;
+    @FindBy(xpath = "(//div[@id='s-skipLinkTargetForMainSearchResults']/following-sibling::span[1]//div)[1]//div[@data-component-type='s-search-result']")
+    private List<WebElement> listProduct;
     private  WebDriver driver;
     public AmazonPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }
     public void clickSearchTextBox(){
-        clickElement(SearchTextBox);
+        clickElement(searchTextBox);
     }
     public void sendKeySearchTextBox(String value){
-        sendKeyElement(SearchTextBox, value);
+        sendKeyElement(searchTextBox, value);
     }
     public void clickSearchButton(){
-        clickElement(ButtonSearch);
+        clickElement(buttonSearch);
     }
     public List<Product> getListProduct (String nameProduct){
         List<Product> ls = new ArrayList<>();
