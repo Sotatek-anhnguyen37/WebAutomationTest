@@ -2,7 +2,6 @@ package testcase;
 
 import base.BaseSetUp;
 import object.Product;
-
 import pages.AmazonPage;
 import pages.EbayPage;
 import org.testng.annotations.Listeners;
@@ -16,7 +15,7 @@ import java.util.List;
 @Listeners(TestListener.class)
 public class TestAll extends BaseSetUp {
     @Test(description = "D.A")
-    public void searchProduct() {
+    public void searchProducts() {
         List<Product> listProduct1;
         List<Product> listProduct2;
         String nameIphone = "iPhone 11";
