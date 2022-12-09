@@ -11,7 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class AmazonPage extends BasePage {
-    private String namePro = ".//span[@class='a-size-medium a-color-base a-text-normal']";
+    private String nameProduct = ".//span[@class='a-size-medium a-color-base a-text-normal']";
     private String priceProduct = ".//span[@class='a-price-whole']";
     private String linkProduct = ".//div[@class='a-section']//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']";
     @FindBy(name = "field-keywords")
@@ -34,12 +34,12 @@ public class AmazonPage extends BasePage {
     public void clickSearchButton(){
         clickElement(buttonSearch);
     }
-    public List<Product> getListProduct (String nameProduct){
+    public List<Product> getListProduct (String namePro){
         List<Product> ls = new ArrayList<>();
         String title = getDriver().getTitle();
         for (WebElement pro : listProduct) {
-            String name = pro.findElement(By.xpath(namePro)).getText();
-            if (name.toLowerCase().contains(nameProduct.toLowerCase())) {
+            String name = pro.findElement(By.xpath(this.nameProduct)).getText();
+            if (name.toLowerCase().contains(namePro.toLowerCase())) {
                 Product product = new Product();
                 try {
                     double price = Double.parseDouble(pro.findElement(By.xpath(priceProduct)).getText().replace(",", ""));
